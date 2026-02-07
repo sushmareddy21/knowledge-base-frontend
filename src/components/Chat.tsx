@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 import type { ChatMessage } from '../types';
 import { chatApi } from '../services/api';
 
@@ -90,8 +91,11 @@ const Chat: React.FC<ChatProps> = ({ selectedDocumentId, selectedDocumentName })
       {/* Chat Header */}
       <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">
+          <h2 className="text-2xl font-bold text-gray-800 flex items-center">
             💬 Chat with AI
+            <span className="ml-2 text-xs font-normal text-white bg-gradient-to-r from-green-500 to-blue-500 px-2 py-1 rounded-full">
+              Powered by GPT-4o-mini
+            </span>
           </h2>
           {selectedDocumentName && (
             <p className="text-sm text-gray-600 mt-1">
@@ -136,7 +140,7 @@ const Chat: React.FC<ChatProps> = ({ selectedDocumentId, selectedDocumentName })
                 ? `Ask questions about ${selectedDocumentName}`
                 : 'Ask questions about your uploaded documents'}
             </p>
-            
+
             {/* Suggested Questions */}
             <div className="mt-6 space-y-2">
               <p className="text-xs text-gray-500 font-medium">SUGGESTED QUESTIONS</p>
@@ -175,8 +179,11 @@ const Chat: React.FC<ChatProps> = ({ selectedDocumentId, selectedDocumentName })
                         </div>
                       </div>
                     )}
-                    <div className="flex-1">
-                      <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <div className="flex-1 overflow-hidden">
+                      {/* ReactMarkdown renders bold, lists, and code nicely */}
+                      <div className={`text-sm prose ${message.role === 'user' ? 'prose-invert' : ''} max-w-none`}>
+                        <ReactMarkdown>{message.content}</ReactMarkdown>
+                      </div>
                       <p
                         className={`text-xs mt-1 ${
                           message.role === 'user'
