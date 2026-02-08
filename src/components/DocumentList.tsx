@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { Document } from '../types'; // Kept 'type' to prevent TS errors
 import { documentApi } from '../services/api';
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { documentApi } from '../services/api';
 
 interface FileUploadProps {

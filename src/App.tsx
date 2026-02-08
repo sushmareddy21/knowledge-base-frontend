@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import FileUpload from './components/FileUpload';
 import DocumentList from './components/DocumentList';
 import Chat from './components/Chat';
@@ -50,7 +50,7 @@ function App() {
                 📚 Knowledge Base AI
               </h1>
               <p className="mt-1 text-sm text-gray-600">
-                Upload documents and chat with AI - Powered by Ollama Llama 3.2
+                Upload documents and chat with AI - Powered by OpenAI & Pinecone
               </p>
             </div>
             <div className="flex items-center space-x-2 text-sm text-gray-600">
@@ -270,8 +270,7 @@ function App() {
       <footer className="mt-12 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
           <p>
-            Built with React, TypeScript, Spring Boot, PostgreSQL, and Ollama
-            Llama 3.2
+            Built with React, TypeScript, Spring Boot, PostgreSQL, OpenAI, and Pinecone
           </p>
         </div>
       </footer>
