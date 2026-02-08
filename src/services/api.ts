@@ -1,7 +1,8 @@
 import axios from 'axios';
-import type { Document, ChatResponse } from '../types'; // Fixed: Added 'type'
+import type { Document, ChatResponse } from '../types';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+// FIXED: Use Vite's environment variable syntax
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -36,7 +37,7 @@ export const documentApi = {
     if (description) {
       formData.append('description', description);
     }
-    
+
     const response = await api.post<Document>('/documents/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
